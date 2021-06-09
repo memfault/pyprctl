@@ -72,9 +72,6 @@ jobs:
       - name: Install dependencies
         run: pipenv install --dev --deploy --python ${{ matrix.python-version }}
         if: "!startsWith(matrix.python-version, 'pypy')"
-      - name: Install py3.6 dependencies
-        run: pip install dataclasses
-        if: "startsWith(matrix.python-version, '3.6')"
       - name: Run tests
         run: pipenv run pytest --cov-report=xml --verbose tests/
         if: "!startsWith(matrix.python-version, 'pypy')"

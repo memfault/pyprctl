@@ -76,6 +76,11 @@ jobs:
         run: pipenv run pytest --cov-report=xml --verbose tests/
         if: "!startsWith(matrix.python-version, 'pypy')"
 
+      # Py3.6
+      - name: Install py3.6 dependencies
+        run: pip install dataclasses
+        if: "startsWith(matrix.python-version, '3.6')"
+
       # PyPy
       - name: Install dependencies
         run: pip install dataclasses pytest pytest-cov
